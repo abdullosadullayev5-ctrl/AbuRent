@@ -25,7 +25,6 @@ const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 if (typeof window !== 'undefined') {
-  // Avoid analytics issues in non-browser environments.
   void import('firebase/analytics')
     .then(({ getAnalytics, isSupported }) => isSupported().then((supported) => supported && getAnalytics(app)))
     .catch(() => undefined);
